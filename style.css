@@ -124,8 +124,8 @@ div.theme-icon {
     height: 24px;
     width: 24px;
     background-color: var(--text-main);
-    -webkit-mask-image: url('/asset/light-dark-switch.svg');
-    mask-image: url('/asset/light-dark-switch.svg');
+    -webkit-mask-image: url('asset/light-dark-switch.svg');
+    mask-image: url('asset/light-dark-switch.svg');
     -webkit-mask-size: contain;
     mask-size: contain;
     -webkit-mask-repeat: no-repeat;
@@ -266,8 +266,8 @@ div.theme-icon {
     width: 10px;
     height: 6px;
     background-color: var(--text-muted);
-    -webkit-mask-image: url('/asset/select-arrow.svg');
-    mask-image: url('/asset/select-arrow.svg');
+    -webkit-mask-image: url('asset/select-arrow.svg');
+    mask-image: url('asset/select-arrow.svg');
     -webkit-mask-size: contain;
     mask-size: contain;
     -webkit-mask-repeat: no-repeat;
