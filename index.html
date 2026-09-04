@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'none';
+        script-src 'self';
+        style-src 'self' 'unsafe-inline';
+        img-src 'self' data: blob:;
+        font-src 'self';
+        base-uri 'none';
+        object-src 'none';
+    ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tangerine / Gradient Tool - C3 | Creative Computing Club</title>
+    <meta name="description" content="
+        美しいメッシュグラデーションを、ブラウザ上で手軽に作れるジェネレーター。フィルムノイズの適用、アスペクト比の調整、高解像度なPNGファイルの書き出しや、CSS/SVGコードのコピーにも対応。デザインやWeb制作に役立つクリエイティブツールです。
+    ">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- preview area -->
+        <main class="preview-viewport">
+            <div id="canvas-wrapper" class="canvas-wrapper">
+                <canvas id="main-canvas"></canvas>
+            </div>
+        </main>
+
+        <!-- control panel -->
+        <aside class="control-panel">
+            <header class="panel-header">
+                <h1>Tangerine by C3</h1>
+                <button id="btn-theme-toggle" class="icon-btn" title="テーマ切り替え" aria-label="テーマ切り替え">
+                    <div class="theme-icon"></div>
+                </button>
+            </header>
+
+            <h2>Gradient Tool</h2>
+
+            <section class="control-group">
+                <label class="group-title">アスペクト比</label>
+                <div class="aspect-controls">
+                    <div class="aspect-buttons">
+                        <button class="btn-aspect active" data-ratio="1:1">1:1</button>
+                        <button class="btn-aspect" data-ratio="4:3">4:3</button>
+                        <button class="btn-aspect" data-ratio="16:9">16:9</button>
+                        <button class="btn-aspect" data-ratio="custom">任意</button>
+                    </div>
+                    <button id="btn-aspect-flip" class="btn-flip" title="縦横比を反転" aria-label="縦横比を反転">
+                        ⇄
+                    </button>
+                </div>
+                <div class="custom-aspect-inputs" id="custom-aspect-container" style="display: none;">
+                    <input type="number" id="custom-w" value="1200" min="100" max="4096" step="10">
+                    <span>&times;</span>
+                    <input type="number" id="custom-h" value="1200" min="100" max="4096" step="10">
+                </div>
+            </section>
+
+            <section class="control-group">
+                <div class="toggle-row">
+                    <label for="toggle-noise" class="group-title" style="margin-bottom:0;">フィルムノイズ</label>
+                    <input type="checkbox" id="toggle-noise" checked>
+                </div>
+                <div class="slider-row" id="noise-slider-container">
+                    <label for="noise-intensity">強度: <span id="noise-val">55%</span></label>
+                    <input type="range" id="noise-intensity" min="1" max="100" value="55">
+                </div>
+            </section>
+
+            <section class="control-group">
+                <div class="export-size-selector">
+                    <label for="export-scale">書き出し解像度:</label>
+                    <div class="select-wrapper">
+                        <select id="export-scale">
+                            <option value="1">標準 (1x)</option>
+                            <option value="2" selected>高画質 (2x)</option>
+                            <option value="4">超高画質 (4x)</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="btn-export-png" class="btn primary-btn">画像として保存（PNG）</button>
+                <button id="btn-copy-css" class="btn secondary-btn">コードをコピー（CSS）</button>
+            </section>
+        </aside>
+    </div>
+
+    <!-- copy completed toast notification -->
+    <div id="toast" class="toast">コードをクリップボードにコピーしました</div>
+
+    <script src="gradients.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
